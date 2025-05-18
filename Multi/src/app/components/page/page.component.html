@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multiple Disease Prediction System</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .welcome-card {
+        animation: fadeIn 0.5s ease-out 0.1s forwards;
+      }
+      .disease-box {
+        animation: fadeIn 0.5s ease-out forwards;
+      }
+      .disease-box:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+      .disease-box:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+      .disease-box:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+      .about-section {
+        animation: fadeIn 0.5s ease-out 1s forwards;
+      }
+      .contact-section {
+        animation: fadeIn 0.5s ease-out 1.2s forwards;
+      }
+      .how-it-works {
+        animation: fadeIn 0.5s ease-out 1.4s forwards;
+      }
+      .legal-disclaimer {
+        animation: fadeIn 0.5s ease-out 1.6s forwards;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body
+    class="bg-[url('bgimage2.png')] bg-contain bg-center min-h-screen flex flex-col"
+  >
+    <!-- Header -->
+    <header class="bg-[rgba(245,245,245,0.7)] py-4 backdrop-blur">
+      <div class="container mx-auto flex justify-between px-4">
+        <div class="flex flex-row">
+          <img
+            [src]="imageSrc"
+            alt="AI Icon"
+            class="w-8 h-8 mr-4 grayscale"
+            (mouseenter)="onMouseEnter()"
+            (mouseleave)="onMouseLeave()"
+          />
+
+          <h1 class="text-2xl font-medium text-neutral-900">
+            Multiple Disease Prediction System
+          </h1>
+        </div>
+        <nav>
+          <a
+            href="#diseases"
+            class="text-neutral-700 hover:text-neutral-900 mx-2"
+            >Diseases</a
+          >
+          <a href="#about" class="text-neutral-700 hover:text-neutral-900 mx-2"
+            >About</a
+          >
+          <a
+            href="#contact"
+            class="text-neutral-700 hover:text-neutral-900 mx-2"
+            >Contact</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main
+      class="flex-grow flex flex-col items-center justify-center px-4 py-8 space-y-10"
+    >
+      <!-- Welcome Card -->
+      <section
+        class="bg-[rgba(245,245,245,0.7)] backdrop-blur max-w-4xl w-full rounded-md shadow-lg p-10 border border-neutral-200 welcome-card"
+      >
+        <div class="flex flex-row justify-center mb-[10px]">
+          <img
+            [src]="imageSrc"
+            alt="AI Icon"
+            class="w-8 h-8 mr-4 grayscale"
+            (mouseenter)="onMouseEnter()"
+            (mouseleave)="onMouseLeave()"
+          />
+
+          <h1 class="text-3xl font-medium text-neutral-900">
+            Multiple Disease Prediction System
+          </h1>
+        </div>
+        <p class="text-neutral-700 text-lg mb-6 text-center">
+          Welcome to an intelligent health assistant that leverages advanced
+          machine learning to predict your risk for multiple diseases—including
+          Diabetes, Heart Disease, and Alzheimer's—instantly and securely.
+        </p>
+        <div
+          class="bg-neutral-100 rounded-lg p-6 mb-8 border border-neutral-200"
+        >
+          <h2 class="text-2xl font-medium text-neutral-900 mb-2 text-center">
+            Why Choose This System?
+          </h2>
+          <ul
+            class="text-neutral-700 space-y-2 text-base list-disc list-inside"
+          >
+            <li>
+              <span class="font-medium text-lime-500">High Accuracy:</span>
+              Achieves over 95% prediction accuracy, validated on real-world
+              datasets.
+            </li>
+            <li>
+              <span class="font-medium text-lime-500">Multiple Diseases:</span>
+              One platform to assess risk for several major health conditions.
+            </li>
+            <li>
+              <span class="font-medium text-lime-500">Instant Results</span>:
+              Get your prediction in seconds, with clear explanations.
+            </li>
+            <li>
+              <span class="font-medium text-lime-500">Privacy First:</span> Your
+              data is never stored or shared.
+            </li>
+          </ul>
+        </div>
+        <div class="flex justify-center">
+          <a
+            class="inline-block px-8 py-3 text-lg font-medium rounded-md bg-neutral-700 text-white hover:bg-neutral-800 shadow-md transition cursor-pointer"
+            (click)="Function()"
+          >
+            Start Prediction
+          </a>
+        </div>
+      </section>
+
+      <!-- Disease Boxes Section -->
+      <section id="diseases" class="w-full max-w-6xl">
+        <div
+          class="bg-[rgba(245,245,245,0.7)] backdrop-blur rounded-md border border-neutral-200 p-8 shadow-lg"
+        >
+          <h2 class="text-2xl font-medium text-neutral-900 mb-6 text-center">
+            Diseases We Predict
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <!-- Diabetes Box -->
+            <div
+              class="bg-[rgba(245,245,245,0.55)] rounded-lg p-5 border-l-4 border-lime-500 shadow-md hover:scale-105 transition-transform flex items-center disease-box"
+            >
+              <img
+                src="/diabetes2.png"
+                alt="Diabetes Icon"
+                class="w-8 h-8 mr-4 grayscale"
+              />
+              <div>
+                <h3 class="text-xl font-medium text-neutral-900 mb-2">
+                  Diabetes
+                </h3>
+                <p class="text-neutral-700 text-sm">
+                  Predicts the likelihood of diabetes based on key health
+                  indicators. Early detection can help manage and prevent
+                  complications.
+                </p>
+              </div>
+            </div>
+            <!-- Heart Disease Box -->
+            <div
+              class="bg-[rgba(245,245,245,0.55)] rounded-lg p-5 border-l-4 border-lime-500 shadow-md hover:scale-105 transition-transform flex items-center disease-box"
+            >
+              <img
+                src="/heart2.png"
+                alt="Heart Disease Icon"
+                class="w-8 h-8 mr-4 grayscale"
+              />
+              <div>
+                <h3 class="text-xl font-medium text-neutral-900 mb-2">
+                  Heart Disease
+                </h3>
+                <p class="text-neutral-700 text-sm">
+                  Assesses your risk for heart disease using clinical and
+                  lifestyle data, supporting proactive heart health management.
+                </p>
+              </div>
+            </div>
+            <!-- Alzheimer's Disease Box -->
+            <div
+              class="bg-[rgba(245,245,245,0.55)] rounded-lg p-5 border-l-4 border-lime-500 shadow-md hover:scale-105 transition-transform flex items-center disease-box"
+            >
+              <img
+                src="/alzheimer2.png"
+                alt="Alzheimer's Icon"
+                class="w-8 h-8 mr-4 grayscale"
+              />
+              <div>
+                <h3 class="text-xl font-medium text-neutral-900 mb-2">
+                  Alzheimer's Disease
+                </h3>
+                <p class="text-neutral-700 text-sm">
+                  Evaluates the risk of Alzheimer's disease using cognitive and
+                  clinical indicators, supporting early detection and care.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section
+        id="about"
+        class="max-w-4xl w-full bg-[rgba(245,245,245,0.7)] backdrop-blur rounded-lg p-6 mt-10 border border-neutral-200 shadow-lg about-section"
+      >
+        <h2 class="text-2xl font-medium text-neutral-900 mb-4">About Us</h2>
+        <p class="text-neutral-700 text-sm">
+          The Multi Disease Prediction System is developed by a team of
+          dedicated researchers and technologists committed to advancing
+          healthcare through artificial intelligence. Our mission is to empower
+          individuals with accessible, accurate, and privacy-focused tools for
+          early disease detection. Leveraging cutting-edge machine learning
+          models, we aim to bridge the gap between complex medical data and
+          actionable health insights.
+        </p>
+        <p class="text-neutral-700 text-sm mt-2">
+          Our platform is built on rigorous scientific validation and adheres to
+          the highest standards of data security, ensuring your trust and
+          safety.
+        </p>
+      </section>
+
+      <!-- Contact Section -->
+      <section
+        id="contact"
+        class="max-w-4xl w-full bg-[rgba(245,245,245,0.7)] backdrop-blur rounded-lg p-6 mt-10 border border-neutral-200 shadow-lg contact-section"
+      >
+        <h2 class="text-2xl font-medium text-neutral-900 mb-4">Contact Us</h2>
+        <p class="text-neutral-700 text-sm">
+          Have questions or need support? Reach out to our team for assistance.
+          We're here to help you understand your health predictions and make the
+          most of our platform.
+        </p>
+        <ul class="text-neutral-700 text-sm mt-4 space-y-2">
+          <li>
+            <span class="font-medium">Email:</span>
+            <a
+              href="mailto:support@multidiseasepredict.com"
+              class="text-lime-500 hover:underline"
+              >support_multidiseasepredict.com</a
+            >
+          </li>
+          <li>
+            <span class="font-medium">Support:</span>
+            <a href="/support" class="text-lime-500 hover:underline"
+              >Visit our Support Center</a
+            >
+          </li>
+        </ul>
+      </section>
+
+      <!-- How It Works Section -->
+      <section
+        class="max-w-4xl w-full bg-[rgba(245,245,245,0.7)] backdrop-blur rounded-lg p-6 mt-10 border border-neutral-200 shadow-lg how-it-works"
+      >
+        <h2 class="text-2xl font-medium text-neutral-900 mb-4">How It Works</h2>
+        <p class="text-neutral-700 text-sm">
+          Our system uses advanced machine learning algorithms trained on
+          extensive medical datasets to analyze your input and predict the
+          likelihood of each disease. Simply provide the required health
+          indicators, and receive an instant assessment.
+        </p>
+      </section>
+
+      <!-- Legal Disclaimer -->
+      <section
+        class="max-w-4xl w-full bg-[rgba(245,245,245,0.7)] backdrop-blur rounded-lg p-6 mt-10 border border-neutral-200 shadow-lg legal-disclaimer"
+      >
+        <h2 class="text-2xl font-medium text-neutral-900 mb-4">
+          Legal Disclaimer
+        </h2>
+        <p class="text-neutral-700 text-sm">
+          The predictions provided by this system are for informational purposes
+          only and should not be considered as medical advice. Always consult
+          with a qualified healthcare professional for medical concerns.
+        </p>
+        <p class="text-neutral-700 text-sm mt-2">
+          By using this system, you agree to our
+          <a class="text-lime-500 hover:underline text-lime-600"
+            >Terms of Service</a
+          >
+          and
+          <a class="text-lime-500 hover:underline text-lime-600"
+            >Privacy Policy</a
+          >.
+        </p>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center text-neutral-600 text-sm">
+      © 2025 Multi Disease Prediction System. All rights reserved. |
+      <a class="text-lime-500 hover:text-lime-600">Terms of Service</a>
+      |
+      <a class="text-lime-500 hover:text-lime-600">Privacy Policy</a>
+    </footer>
+  </body>
+</html>

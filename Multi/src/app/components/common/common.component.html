@@ -1,0 +1,158 @@
+<!-- <div class="flex justify-center items-center mt-auto">
+  <div
+    class="bg-[#1e1e1e] border border-solid border-neutral-800 p-20 shadow-xl text-center"
+  >
+    <h1 class="font-[800] text-[20px]">
+      Welcome to Alzheimer Disease Prediction
+    </h1>
+    <div
+      class="border border-solid border-neutral-700 bg-neutral-700 mt-8 p-4 shadow-md"
+    >
+      Enter the details here:
+      <br /><br />
+      <input
+        type="text"
+        class="bg-neutral-800 border border-solid border-neutral-700 p-1 placeholder:text-neutral-300 mb-[5px]"
+        placeholder="Enter Symptoms"
+        [(ngModel)]="TextInput.symptoms"
+      />
+      <br />
+    </div>
+    <div
+      class="border border-solid border-neutral-600 bg-neutral-700 mt-8 p-4 shadow-md"
+      *ngIf="Pred_Display == true"
+    >
+      <p>Prediction: {{ Result }}</p>
+      <p>Reasons :</p>
+      <span *ngFor="let i of Reasons">{{ i }} </span>
+    </div>
+    <button
+      class="p-1 mt-4 border border-solid border-neutral-100 bg-neutral-300 text-neutral-900 shadow-sm w-[100px] hover:bg-neutral-400 border-neutral-200 rounded-xs"
+      (click)="Sym_Predict()"
+    >
+      Predict
+    </button>
+  </div>
+</div> -->
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Common Disease Prediction</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .prediction-container {
+        animation: fadeIn 0.5s ease-out 0.2s forwards;
+      }
+      .prediction-heading {
+        animation: fadeIn 0.5s ease-out 0.4s forwards;
+      }
+      .input-section {
+        animation: fadeIn 0.5s ease-out 0.6s forwards;
+      }
+      .prediction-section {
+        animation: fadeIn 0.5s ease-out 0.8s forwards;
+      }
+      .predict-button {
+        animation: fadeIn 0.5s ease-out 1s forwards;
+      }
+      .waterfall-image {
+        animation: fadeIn 0.5s ease-out 1.2s forwards;
+      }
+      .waterfall-placeholder {
+        animation: fadeIn 0.5s ease-out 1.2s forwards;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- Header (Matching Original) -->
+
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col items-center justify-center px-4 py-8">
+      <div
+        class="prediction-container rounded-md bg-[rgba(245,245,245,0.7)] backdrop-blur shadow-lg border border-neutral-400 flex flex-col md:flex-row items-center justify-center max-w-5xl w-full min-h-[600px] space-y-6 md:space-y-0 md:space-x-6"
+      >
+        <!-- Prediction Form -->
+        <div class="rounded-md p-6 text-center w-full max-w-2xl">
+          <h1 class="text-2xl font-medium text-neutral-900 mb-6">
+            Welcome to Disease Prediction using Text
+          </h1>
+          <div
+            class="bg-neutral-100 rounded-lg p-6 mb-8 border border-neutral-400 w-full flex justify-center items-center flex-col"
+          >
+            <label
+              class="text-neutral-700 text-base mb-4 block font-medium text-lime-500"
+              >Enter the details here:</label
+            >
+            <br />
+            <div class="w-full max-w-md">
+              <input
+                type="text"
+                class="bg-neutral-50 border border-neutral-300 p-2 w-full rounded-md text-neutral-900 placeholder:text-neutral-400 text-base"
+                placeholder="Enter symptoms"
+                [(ngModel)]="TextInput.symptoms"
+              />
+            </div>
+          </div>
+          <div
+            class="prediction-section bg-neutral-100 rounded-lg p-6 mb-8 border border-neutral-400"
+            *ngIf="Pred_Display == true"
+          >
+            <p class="text-neutral-700 text-base">
+              Prediction:
+              <span class="text-lime-600">{{ Result }}</span>
+            </p>
+            <p class="text-neutral-700 text-base">
+              Probability:
+              <span class="text-lime-600">{{ Probability }}</span>
+            </p>
+          </div>
+          <button
+            class="px-6 py-2 text-base font-medium rounded-md bg-neutral-700 text-white hover:bg-neutral-800 shadow-md transition"
+            (click)="Sym_Predict()"
+          >
+            Predict
+          </button>
+        </div>
+        <!-- SHAP Waterfall Image -->
+        <div
+          class="w-full max-w-2xl bg-white rounded-sm shadow-lg p-6 mr-[20px] mt-[10px] mb-[10px]"
+          *ngIf="Pred_Display == true"
+        >
+          <p class="text-center">SHap Values BAR GRAPH</p>
+          <apx-chart
+            *ngIf="chartOptions"
+            [series]="chartOptions.series!"
+            [chart]="chartOptions.chart!"
+            [xaxis]="chartOptions.xaxis!"
+            [plotOptions]="chartOptions.plotOptions!"
+            [dataLabels]="chartOptions.dataLabels!"
+            [tooltip]="chartOptions.tooltip!"
+            [fill]="chartOptions.fill!"
+            [colors]="chartOptions.colors!"
+            class="w-full h-auto rounded-sm border border-neutral-200"
+          ></apx-chart>
+          <p class="whitespace-pre-line">{{ Explanation }}</p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
